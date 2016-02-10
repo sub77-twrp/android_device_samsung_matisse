@@ -1,1 +1,1 @@
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_matisse.mk $(LOCAL_DIR)/multirom_matisse.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_matisse.mk $(LOCAL_DIR)/multirom_matisse.mk $(LOCAL_DIR)/kernel_matisse.mk

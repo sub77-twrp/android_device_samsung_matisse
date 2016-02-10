@@ -13,5 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-add_lunch_combo omni_matisse-eng
+add_lunch_combo kernel_matisse-eng
 add_lunch_combo multirom_matisse-eng
+add_lunch_combo omni_matisse-eng
