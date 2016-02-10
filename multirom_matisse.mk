@@ -32,12 +32,12 @@ MR_INFOS := device/samsung/matisse/multirom/mrom_infos
 MR_KEXEC_MEM_MIN := 0x06200000
 MR_KEXEC_DTB := true
 MR_PIXEL_FORMAT := "RGBX_8888"
-#MR_USE_QCOM_OVERLAY := true
-#MR_QCOM_OVERLAY_HEADER := device/samsung/matisse/multirom/mr_qcom_overlay.h
-#MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
-MR_CONTINUOUS_FB_UPDATE := true
+MR_USE_QCOM_OVERLAY := true
+MR_QCOM_OVERLAY_HEADER := device/samsung/matisse/multirom/mr_qcom_overlay.h
+MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
+MR_CONTINUOUS_FB_UPDATE := false
 #MR_DEVICE_HOOKS := device/samsung/matisse/multirom/mr_hooks.c
-MR_DEVICE_HOOKS_VER := 3
+#MR_DEVICE_HOOKS_VER := 3
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := matisse
