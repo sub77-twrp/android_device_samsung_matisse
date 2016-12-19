@@ -53,7 +53,7 @@ void vendor_load_properties()
 {
 	char bootloader[PROP_VALUE_MAX];
 
-	property_get("ro.bootloader", bootloader);
+	property_get("ro.bootloader");
 
 	if (strstr(bootloader, "T530XX")) {
 		/* WiFi */

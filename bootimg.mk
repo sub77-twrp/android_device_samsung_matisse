@@ -7,6 +7,9 @@ else
 RECOVERY_IMG := $(PRODUCT_OUT)/recovery.img
 RECOVERY_TAR := $(PRODUCT_OUT)/recovery.tar
 endif
+ifdef TARGET_PREBUILT_DTB
+#BOARD_MKBOOTIMG_ARGS += --dt $(TARGET_PREBUILT_DTB)
+endif
 
 $(recovery_ramdisk): $(recovery_uncompressed_ramdisk)
 	$(call pretty,"Target LZMA ramdisk: $@")
@@ -20,6 +23,6 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(recovery_kernel) $(recovery_ra
 	$(hide) echo -n "SEANDROIDENFORCE" >> $(INSTALLED_RECOVERYIMAGE_TARGET)
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
 	$(hide) tar -C $(PRODUCT_OUT) -H ustar -c recovery.img > $(RECOVERY_TAR)
-  $(hide) mv $(PRODUCT_OUT)/recovery.img $(RECOVERY_IMG)
+	$(hide) mv $(PRODUCT_OUT)/recovery.img $(RECOVERY_IMG)
 	@echo -e ${CL_CYN}"Made Odin flashable recovery tar: $(RECOVERY_TAR)"${CL_RST}
-  @echo -e ${CL_CYN}"Made flashable recovery image: $(RECOVERY_IMG)"${CL_RST}
+	@echo -e ${CL_CYN}"Made flashable recovery image: $(RECOVERY_IMG)"${CL_RST}

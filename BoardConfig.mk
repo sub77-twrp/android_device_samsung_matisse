@@ -15,29 +15,27 @@ BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := krait
+TARGET_CPU_VARIANT := cortex-a7
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Kernel
-#TARGET_KERNEL_SOURCE := kernel/samsung/msm8226
-TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_HEADER_ARCH := arm
-TARGET_KERNEL_CONFIG := twrp_defconfig
-TARGET_KERNEL_DEVICE_DEFCONFIG := device_matisse
+TARGET_KERNEL_SOURCE := kernel/samsung/msm8226
+TARGET_KERNEL_CONFIG := twrp_matisse_defconfig
+KERNEL_TOOLCHAIN_PREFIX := arm-linux-androideabi-
 
-TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/zImage
-TARGET_PREBUILT_DTB := $(DEVICE_TREE)/dtb
+#TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/zImage
+#TARGET_PREBUILT_DTB := $(DEVICE_TREE)/dtb
 
 # Boot image
 BOARD_KERNEL_CMDLINE :=  console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --dt $(TARGET_PREBUILT_DTB) --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
+#BOARD_KERNEL_SEPARATED_DT := true
 BOARD_CUSTOM_BOOTIMG_MK :=  $(DEVICE_TREE)/bootimg.mk
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 10485760
@@ -60,7 +58,7 @@ TW_THEME := landscape_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TW_CUSTOM_BATTERY_PATH := /sys/class/power_supply/battery
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 162
